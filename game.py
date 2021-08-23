@@ -16,14 +16,15 @@ def play():
             print('Такой комманды не существует. Введите help!')
         else:
             if comm == 'start':
-                try:
-                    player.attack(enemy)
-                    player.defence(enemy)
-                except exc.EnemyDownExceptions:
-                    level += 1
-                    enemy = mod.Enemy(level)
-                    player.score += 5
-                    print('Player lives: ', player.lives,'Enemy lives: ', enemy.lives, '| Score: ', player.score)
+                while True:
+                    try:
+                        player.attack(enemy)
+                        player.defence(enemy)
+                    except exc.EnemyDownExceptions:
+                        level += 1
+                        enemy = mod.Enemy(level)
+                        player.score += 5
+                        print('Player lives: ', player.lives,'Enemy lives: ', enemy.lives, '| Score: ', player.score)
             elif comm == 'help':
                 print('Allowed commands: ', set.ALLOWED_COMMANDS)
             elif comm == 'show scores':
